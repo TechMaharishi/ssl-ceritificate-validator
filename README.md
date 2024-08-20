@@ -59,7 +59,7 @@ This project is a web application that validates SSL certificates for a given do
    npm run dev
    ```
 
-   The React app will run on `http://localhost:3000` (or another port if configured differently).
+   The React app will run on `http://localhost:5173/`
 
 ## Technology Choices
 
