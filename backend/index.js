@@ -1,11 +1,16 @@
 const express = require('express');
 const tls = require('tls');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
+// Enable CORS
+app.use(cors());
+
 app.use(express.json());
 
+// Function to fetch the certificate for a domain
 const getCertificate = (domain) => {
   return new Promise((resolve, reject) => {
     const socket = tls.connect(443, domain, { servername: domain }, () => {
@@ -30,6 +35,7 @@ const getCertificate = (domain) => {
   });
 };
 
+// Function to validate the expiry date of a certificate
 const validateExpiryDate = (cert) => {
   const now = new Date();
   const validTo = new Date(cert.valid_to);
@@ -39,6 +45,7 @@ const validateExpiryDate = (cert) => {
   };
 };
 
+// Function to verify if the certificate is valid for the provided domain
 const verifyDomain = (cert, domain) => {
   const commonName = cert.subject.CN;
   const altNames = cert.subjectaltname ? cert.subjectaltname.split(', ').map(name => name.replace('DNS:', '').trim()) : [];
@@ -46,7 +53,7 @@ const verifyDomain = (cert, domain) => {
   return { isValidForDomain };
 };
 
-// API to validate a certificate
+//Validate the certificate for a domain
 app.post('/api/validate-certificate', async (req, res) => {
   const { domain } = req.body;
   if (!domain) {
