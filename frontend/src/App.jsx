@@ -41,7 +41,7 @@ const App = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            placeholder="Enter domain"
+            placeholder="Enter domain (eg: google.com)"
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
             className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:border-blue-500 transition duration-200"
