@@ -27,7 +27,6 @@ const App = () => {
     ));
   };
 
-  // Mapping for certificate fields
   const fullFormMapping = {
     C: 'Country',
     O: 'Organization',
@@ -79,7 +78,12 @@ const App = () => {
                   {formatDetails(data.subjectDetails)}
                 </ul>
               </li>
-              <li><strong>Valid for Domain:</strong> {data.validForDomain ? 'Yes' : 'No'}</li>
+              <li>
+                <strong>Valid for Domain:</strong>
+                <span className={data.validForDomain ? 'text-green-600' : 'text-red-600'}>
+                  {data.validForDomain ? 'Yes' : 'No'}
+                </span>
+              </li>
             </ul>
           </div>
         )}
