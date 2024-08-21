@@ -13,8 +13,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "asn1js": "^3.0.5",
+    "axios": "^1.7.4",
+    "buffer": "^6.0.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
+    "pkijs": "^3.2.4",
     "tls": "^0.0.1"
   }
 }
